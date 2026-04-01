@@ -379,4 +379,13 @@ body {
 .contact-card:hover .contact-info a {
     color: var(--white);
 }
+    .contact-info a {
+    text-decoration: none;
+    color: var(--primary); /* Kalin thibba green color eka */
+    transition: all 0.3s;
+}
+
+.contact-card:hover .contact-info a {
+    color: var(--white); /* Card eka udata mouse eka giyama sudu paata wenawa */
+}
 }
