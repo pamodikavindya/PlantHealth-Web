@@ -370,5 +370,13 @@ body {
     
     .disease-cards, .contact-cards {
         grid-template-columns: 1fr;
-    }
+    }/* Contact links styling */
+.contact-info a {
+    color: var(--primary);
+    transition: all 0.3s;
+}
+
+.contact-card:hover .contact-info a {
+    color: var(--white);
+}
 }
