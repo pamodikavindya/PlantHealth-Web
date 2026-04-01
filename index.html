@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Identifier | දළු රෝග හඳුනාගැනීම</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>PlantHealth</span>
+            </div>
+            <nav class="nav">
+                <a href="#upload">Identify</a>
+                <a href="#info">Diseases</a>
+                <a href="#contacts">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Plant Disease Identification<br>දළු රෝග හඳුනාගැනීම</h1>
+            <p>Upload an image of your plant to identify diseases and get treatment recommendations</p>
+            <div class="hero-image">
+                <img src="image/hand-giving-growing-plant_.jpg" alt="Plant Health">
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Upload Diseased Plant Image<br>රෝගී පැලේ පින්තූරය එක් කරන්න</h2>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <p class="upload-text">Drag & Drop your image here<br>or click to browse</p>
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <button class="btn btn-primary" id="uploadBtn">Choose File</button>
+            </div>
+            
+            <div class="preview-container" id="previewContainer">
+                <div class="preview-header">
+                    <h3>Image Preview</h3>
+                    <button class="btn btn-small" id="removeBtn">Remove</button>
+                </div>
+                <img id="preview" src="" alt="Preview">
+                <div class="analysis-section">
+                    <h3>Analysis Results</h3>
+                    <div class="results-placeholder">
+                        <p>Upload an image to see disease analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="info-section">
+        <div class="container">
+            <h2>Common Plant Diseases<br>සාමාන්‍ය දළු රෝග</h2>
+            
+            <div class="disease-cards">
+                <div class="disease-card">
+                    <div class="disease-icon">
+                        <i class="fas fa-fungi"></i>
+                    </div>
+                    <h3>Fungal Diseases<br>යළුණු රෝග</h3>
+                    <div class="disease-info">
+                        <div class="info-item">
+                            <span class="info-label">Causes / හේතු:</span>
+                            <p>High humidity, wet leaves, poor airflow</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Remedies / ප්‍රතිකාර:</span>
+                            <p>Fungicides, neem oil, remove infected parts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-icon">
+                        <i class="fas fa-bacteria"></i>
+                    </div>
+                    <h3>Bacterial Diseases<br>බැක්ටීරියා රෝග</h3>
+                    <div class="disease-info">
+                        <div class="info-item">
+                            <span class="info-label">Causes / හේතු:</span>
+                            <p>Contaminated tools, water splash</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Remedies / ප්‍රතිකාර:</span>
+                            <p>Copper-based sprays, sanitation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-icon">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <h3>Viral Diseases<br>වෛරස් රෝග</h3>
+                    <div class="disease-info">
+                        <div class="info-item">
+                            <span class="info-label">Causes / හේතු:</span>
+                            <p>Pests like aphids & whiteflies</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Remedies / ප්‍රතිකාර:</span>
+                            <p>No cure—control pests & remove infected plants</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="contacts-section">
+        <div class="container">
+            <h2>Sri Lankan Agriculture Support<br>ශ්‍රී ලංකා කෘෂි සහාය</h2>
+            
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Hotline</h3>
+                    <p>Department of Agriculture</p>
+                    <div class="contact-info">1920</div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Website</h3>
+                    <p>Official Portal</p>
+                    <div class="contact-info">www.agridept.gov.lk</div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Local Offices</h3>
+                    <p>Provincial Agriculture Offices</p>
+                    <div class="contact-info">Contact your nearest office</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 PlantHealth - Plant Disease Identification System</p>
+            <p>Developed for Sri Lankan Agriculture</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
