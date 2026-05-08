@@ -144,96 +144,23 @@ document.querySelectorAll('nav a').forEach(anchor => {
         });
     });
 });
-// --- Voice Search Logic ---
-function startVoiceSearch() {
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US'; 
-
-    const voiceBtn = document.getElementById('voiceBtn');
-    const searchInput = document.getElementById('diseaseSearchInput');
-
-    // Mic eka click kalama rathu paata pulse eka on wenawa
-    voiceBtn.classList.add('voice-active');
-
-    recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        searchInput.value = transcript; 
-        voiceBtn.classList.remove('voice-active');
-        performSearch(); 
-    };
-
-    recognition.onspeechend = () => {
-        recognition.stop();
-        voiceBtn.classList.remove('voice-active');
-    };
-
-    recognition.onerror = () => {
-        voiceBtn.classList.remove('voice-active');
-        alert("හඬ හඳුනා ගැනීමට නොහැකි විය.");
-    };
-
-    recognition.start();
-}
-
-// --- Search Logic ---
+// Test search function
 function performSearch() {
     const query = document.getElementById('diseaseSearchInput').value;
-    const resultDisplay = document.getElementById('searchResult');
-
-    if (query.trim() !== "") {
-        resultDisplay.innerHTML = `ප්‍රතිඵල සොයමින් පවතී: <strong>"${query}"</strong>...`;
-    }
+    alert("සොයන පදය: " + query);
 }
 
-// 1. Voice Search Function
+// Voice search function
 function startVoiceSearch() {
-    // Browser eka speech recognition support karanawada balanna
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    
     if (!SpeechRecognition) {
-        alert("ඔබේ Browser එක Voice Search Support කරන්නේ නැත. කරුණාකර Chrome භාවිතා කරන්න.");
+        alert("Voice search support කරන්නේ නැත.");
         return;
     }
-
     const recognition = new SpeechRecognition();
-    recognition.lang = 'en-US'; 
-
-    const voiceBtn = document.getElementById('voiceBtn');
-    const searchInput = document.getElementById('diseaseSearchInput');
-
-    // Pulse animation eka CSS eken add kireema
-    voiceBtn.classList.add('voice-active');
-
     recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        searchInput.value = transcript; 
-        voiceBtn.classList.remove('voice-active');
-        performSearch(); // Text eka labunu gaman search trigger kireema
+        document.getElementById('diseaseSearchInput').value = event.results[0][0].transcript;
+        performSearch();
     };
-
-    recognition.onspeechend = () => {
-        recognition.stop();
-        voiceBtn.classList.remove('voice-active');
-    };
-
-    recognition.onerror = (event) => {
-        console.error(event.error);
-        voiceBtn.classList.remove('voice-active');
-    };
-
     recognition.start();
-}
-
-// 2. Manual Search Function
-function performSearch() {
-    const query = document.getElementById('diseaseSearchInput').value;
-    const resultDisplay = document.getElementById('searchResult');
-
-    if (query.trim() === "") {
-        alert("කරුණාකර රෝගයක නමක් ඇතුළත් කරන්න.");
-        return;
-    }
-
-    resultDisplay.innerHTML = `ප්‍රතිඵල සොයමින් පවතී: <strong>"${query}"</strong>...`;
-    // Meeta passe database connection ekak danna puluwan
 }
