@@ -144,3 +144,50 @@ document.querySelectorAll('nav a').forEach(anchor => {
         });
     });
 });
+// --- Voice Search Logic ---
+function startVoiceSearch() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US'; 
+
+    const voiceBtn = document.getElementById('voiceBtn');
+    const searchInput = document.getElementById('diseaseSearchInput');
+
+    // Mic eka click kalama rathu paata pulse eka on wenawa
+    voiceBtn.classList.add('voice-active');
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript; 
+        voiceBtn.classList.remove('voice-active');
+        performSearch(); 
+    };
+
+    recognition.onspeechend = () => {
+        recognition.stop();
+        voiceBtn.classList.remove('voice-active');
+    };
+
+    recognition.onerror = () => {
+        voiceBtn.classList.remove('voice-active');
+        alert("හඬ හඳුනා ගැනීමට නොහැකි විය.");
+    };
+
+    recognition.start();
+}
+
+// --- Search Logic ---
+function performSearch() {
+    const query = document.getElementById('diseaseSearchInput').value;
+    const resultDisplay = document.getElementById('searchResult');
+
+    if (query.trim() !== "") {
+        resultDisplay.innerHTML = `ප්‍රතිඵල සොයමින් පවතී: <strong>"${query}"</strong>...`;
+    }
+}
+
+// Enter key eka obapu gaman search wenna
+document.getElementById('diseaseSearchInput')?.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+});
