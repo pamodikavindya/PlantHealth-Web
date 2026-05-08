@@ -12,7 +12,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <i class="fas fa-leaf"></i> <span>AgriDoctor</span>
+                <i class="fas fa-leaf"></i> <h2></ா2><span>AgriDoctor</span></h2>
             </div>
             <nav class="nav">
                 <a href="#upload">Identify</a>
@@ -25,7 +25,7 @@
     <section class="hero">
         <div class="container">
             <h1>Plant Disease Identification<br>දළු රෝග හඳුනාගැනීම</h1>
-            <p>Upload an image of your plant to identify diseases and get treatment recommendations</p>
+            <p>Identify diseases and get treatment recommendations</p>
             <div class="hero-image">
                 <img src="hand-giving-growing-plant_.jpg" alt="Plant Health">
             </div>
@@ -38,9 +38,6 @@
                 <h2>Quick Disease Search</h2>
                 <div class="search-bar">
                     <input type="text" id="diseaseSearchInput" placeholder="Enter disease name...">
-                    <button type="button" id="voiceBtn" onclick="startVoiceSearch()">
-                        <i class="fas fa-microphone"></i>
-                    </button>
                     <button type="button" id="searchBtn" onclick="performSearch()">
                         <i class="fas fa-search"></i> Search
                     </button>
@@ -56,7 +53,7 @@
                 <h2>Identify Your Plant Disease</h2>
                 <div class="upload-area" id="uploadArea">
                     <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Drag & Drop your image here<br>or click to browse</p>
+                    <p>Drag & Drop your image here or click to browse</p>
                     <input type="file" id="imageInput" accept="image/*" hidden>
                     <button class="btn-primary" id="uploadBtn">Choose File</button>
                 </div>
@@ -64,7 +61,8 @@
                 <div id="previewContainer" style="display: none;">
                     <h3>Image Preview</h3>
                     <img id="preview" src="" alt="Preview">
-                    <button id="removeBtn">Remove Image</button>
+                    <br>
+                    <button id="removeBtn" onclick="removeImage()">Remove Image</button>
                 </div>
 
                 <div class="analysis-section">
@@ -79,7 +77,7 @@
 
     <section id="contacts" class="contacts-section">
         <div class="container">
-            <h2 class="section-title">Sri Lankan Agriculture Support</h2>
+            <h2 style="text-align: center; margin-bottom: 40px;">Sri Lankan Agriculture Support</h2>
             <div class="contact-cards">
                 <div class="contact-card">
                     <i class="fas fa-phone-alt"></i>
