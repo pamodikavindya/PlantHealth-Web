@@ -32,24 +32,28 @@
             </div>
         </div>
     </section>
-<!-- New Search & Voice Section -->
-    <section class="search-section">
-        <div class="container">
-            <div class="search-box-container">
-                <h2>Quick Disease Search <br> රෝගය ඉක්මනින් සොයන්න</h2>
-                <div class="search-bar">
-                    <input type="text" id="diseaseSearchInput" placeholder="Enter disease name... (e.g. Tomato blight)">
-                    <button id="voiceBtn" onclick="startVoiceSearch()" title="Katha karala search karanna">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                    <button id="searchBtn" onclick="performSearch()">
-                        <i class="fas fa-search"></i> Search
-                    </button>
-                </div>
-                <div id="searchResult" class="search-result-display"></div>
+<section class="search-section">
+    <div class="container">
+        <div class="search-box-container">
+            <h2>Quick Disease Search</h2>
+            <div class="search-bar">
+                <!-- ID eka diseaseSearchInput kiyala thiyenna oni -->
+                <input type="text" id="diseaseSearchInput" placeholder="Enter disease name...">
+                
+                <!-- onclick="startVoiceSearch()" eka thiyenna oni -->
+                <button type="button" id="voiceBtn" onclick="startVoiceSearch()">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                
+                <!-- onclick="performSearch()" eka thiyenna oni -->
+                <button type="button" id="searchBtn" onclick="performSearch()">
+                    <i class="fas fa-search"></i> Search
+                </button>
             </div>
+            <div id="searchResult" class="search-result-display"></div>
         </div>
-    </section>
+    </div>
+</section>
     <section id="upload" class="upload-section">
         <div class="container">
             <h2>Upload Diseased Plant Image<br>රෝගී පැලේ පින්තූරය එක් කරන්න</h2>
