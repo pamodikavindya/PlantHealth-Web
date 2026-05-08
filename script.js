@@ -87,27 +87,20 @@ const removeBtn = document.getElementById('removeBtn');
 
 // --- Event Listeners ---
 document.addEventListener('DOMContentLoaded', () => {
-    uploadBtn.onclick = () => imageInput.click();
-    uploadArea.onclick = () => imageInput.click();
-    imageInput.onchange = handleFileSelect;
-    removeBtn.onclick = resetUpload;
-
-    uploadArea.ondragover = (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); };
-    uploadArea.ondragleave = () => uploadArea.classList.remove('dragover');
-    uploadArea.ondrop = (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove('dragover');
-        if (e.dataTransfer.files.length) {
-            imageInput.files = e.dataTransfer.files;
-            handleFileSelect();
-        }
-    };
+    if(uploadBtn) uploadBtn.onclick = () => imageInput.click();
+    if(uploadArea) uploadArea.onclick = () => imageInput.click();
+    if(imageInput) imageInput.onchange = handleFileSelect;
+    if(removeBtn) removeBtn.onclick = resetUpload;
 });
 
 // --- Search Functionality ---
 function performSearch() {
-    const query = document.getElementById('diseaseSearchInput').value.toLowerCase().trim();
+    const input = document.getElementById('diseaseSearchInput');
     const resultDisplay = document.getElementById('searchResult');
+
+    if (!input || !resultDisplay) return;
+
+    const query = input.value.toLowerCase().trim();
 
     if (query === "") {
         resultDisplay.innerHTML = "<p style='color:orange;'>කරුණාකර රෝගයක නමක් ඇතුළත් කරන්න...</p>";
@@ -120,7 +113,7 @@ function performSearch() {
     if (disease) {
         resultDisplay.innerHTML = `
             <div class="result-card">
-                <h3><i class="fas fa-leaf"></i> ${disease.sinhalaName}</h3>
+                <h3>${disease.sinhalaName}</h3>
                 <p><strong>⚠️ හේතුව:</strong> ${disease.causes}</p>
                 <p style="margin-top: 10px;"><strong>✅ පිළියම:</strong> ${disease.remedy}</p>
             </div>`;
@@ -132,7 +125,10 @@ function performSearch() {
 // --- Voice Search Functionality ---
 function startVoiceSearch() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return alert("Voice recognition support කරන්නේ නැත.");
+    if (!SpeechRecognition) {
+        alert("ඔබේ browser එක voice search support කරන්නේ නැත.");
+        return;
+    }
     
     const recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
@@ -152,7 +148,7 @@ function startVoiceSearch() {
     recognition.start();
 }
 
-// --- Image Handling & Analysis Simulation ---
+// --- Image Handling ---
 function handleFileSelect() {
     const file = imageInput.files[0];
     if (file && file.type.match('image.*')) {
@@ -169,27 +165,21 @@ function handleFileSelect() {
 function resetUpload() {
     imageInput.value = '';
     previewContainer.style.display = 'none';
-    document.querySelector('.results-placeholder').innerHTML = '<p>Upload an image to see disease analysis</p>';
+    const placeholder = document.querySelector('.results-placeholder');
+    if(placeholder) placeholder.innerHTML = '<p>Upload an image to see disease analysis</p>';
 }
 
 function simulateAnalysis() {
     const placeholder = document.querySelector('.results-placeholder');
-    placeholder.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> පින්තූරය විශ්ලේෂණය කරමින්...</div>';
+    if(!placeholder) return;
+
+    placeholder.innerHTML = '<div>පින්තූරය පරීක්ෂා කරමින්...</div>';
     
     setTimeout(() => {
         placeholder.innerHTML = `
             <div class="analysis-result">
-                <h4>සම්පූර්ණයි! (Analysis Complete)</h4>
-                <p>පින්තූරය සාර්ථකව පරීක්ෂා කරන ලදී. වැඩිදුර තොරතුරු සඳහා Search box එක භාවිතා කරන්න.</p>
+                <h4>Analysis Complete</h4>
+                <p>වැඩිදුර විස්තර සඳහා ඉහත Search box එක භාවිතා කරන්න.</p>
             </div>`;
     }, 2000);
 }
-
-// Smooth scrolling
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.onclick = function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-    };
-});
