@@ -1,192 +1,57 @@
-/* --- AgriDoctor Master Stylesheet --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+/* --- AgriDoctor Final Style --- */
 :root {
     --primary: #2e7d32;
     --primary-light: #4caf50;
     --primary-dark: #1b5e20;
     --secondary: #ff9800;
     --text: #333333;
-    --text-light: #666666;
-    --background: #f4fbf4;
+    --background: #f8fdf8;
     --white: #ffffff;
-    --gray: #f5f5f5;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --radius: 15px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: var(--background); color: var(--text); line-height: 1.6; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: var(--text);
-    background-color: var(--background);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-/* --- Header & Navigation --- */
-.header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.nav a {
-    margin-left: 25px;
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
-}
-
+/* Header & Nav */
+.header { background: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; padding: 15px 0; }
+.header .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+.nav a { margin-left: 25px; text-decoration: none; color: var(--text); font-weight: 500; }
 .nav a:hover { color: var(--primary); }
 
-/* --- Hero Section --- */
-.hero {
-    padding: 80px 0;
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    color: white;
-}
-
+/* Hero Section */
+.hero { padding: 80px 0; text-align: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); }
 .hero h1 { font-size: 2.5rem; margin-bottom: 20px; }
 
-/* --- Modern Search Section --- */
-.search-section { padding: 60px 0; }
+/* Search Section - Meeka thama oyaage aluth kotasa */
+.search-section { padding: 60px 0; text-align: center; background: var(--white); }
+.search-box-container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.search-bar { display: flex; gap: 10px; background: #f1f8e9; padding: 10px; border-radius: 50px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+.search-bar input { flex: 1; border: none; background: transparent; padding: 10px 20px; outline: none; font-size: 1rem; }
+.search-bar button { border-radius: 50px; padding: 10px 20px; border: none; cursor: pointer; transition: 0.3s; }
+#searchBtn { background: var(--primary); color: white; font-weight: 600; }
+#voiceBtn { background: white; color: var(--primary); border: 1px solid #ddd; }
 
-.search-box-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 40px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-}
+/* Search Result Card */
+.result-card { background: white; border-radius: 15px; border-left: 10px solid var(--primary); box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 25px; text-align: left; margin-top: 20px; animation: slideUp 0.5s ease-out; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.search-bar {
-    display: flex;
-    gap: 12px;
-    background: #f1f8e9;
-    padding: 8px;
-    border-radius: 50px;
-    border: 1px solid #dcedc8;
-    margin-top: 20px;
-}
+/* Upload Area */
+.upload-section { padding: 80px 0; }
+.upload-area { border: 2px dashed #ccc; border-radius: var(--radius); padding: 50px; text-align: center; background: #f9f9f9; cursor: pointer; }
+.upload-area:hover { border-color: var(--primary); background: #f0f7f0; }
 
-.search-bar input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 12px 20px;
-    font-size: 1rem;
-    outline: none;
-}
+/* Info Section (Disease Cards) */
+.info-section { padding: 80px 0; background: #f5f5f5; }
+.disease-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.disease-card { background: white; border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
 
-.search-bar button {
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 600;
-}
+/* Footer */
+.footer { background: var(--primary-dark); color: white; padding: 30px 0; text-align: center; }
 
-#searchBtn {
-    background: var(--primary);
-    color: white;
-    padding: 10px 30px;
-}
-
-#voiceBtn {
-    background: white;
-    color: var(--primary);
-    width: 50px;
-    height: 50px;
-    border: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* --- Search Result Card --- */
-.result-card {
-    background: white;
-    border-radius: var(--radius);
-    border-left: 10px solid var(--primary);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    padding: 30px;
-    margin-top: 30px;
-    text-align: left;
-    animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Image Upload Area --- */
-.upload-area {
-    border: 2px dashed #ccc;
-    border-radius: var(--radius);
-    padding: 50px;
-    text-align: center;
-    background: var(--gray);
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.upload-area:hover { border-color: var(--primary); background: #e8f5e9; }
-
-/* --- Footer --- */
-.footer {
-    background: var(--primary-dark);
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-    margin-top: 60px;
-}
-
-/* Voice Animation */
-.voice-active {
-    background-color: #ff4444 !important;
-    color: white !important;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-}
+/* Voice Active Class */
+.voice-active { background: #ff4444 !important; color: white !important; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
