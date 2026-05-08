@@ -5,26 +5,26 @@ const preview = document.getElementById('preview');
 const resultDisplay = document.getElementById('resultDisplay');
 const searchInput = document.getElementById('diseaseSearchInput');
 
-// 1. Leda 15ka Database eka (Diseases Data)
+// 1. Diseases Database (ලෙඩ 15 ක විස්තර)
 const diseaseData = {
-    "leaf curl": "හේතුව: සුදු මැස්සන්. පිළියම: කොහොඹ තෙල් භාවිතා කරන්න.",
-    "fungal infection": "හේතුව: අධික තෙතමනය. පිළියම: දිලීර නාශකයක් යොදන්න.",
-    "blight": "හේතුව: බැක්ටීරියා ආසාදනය. පිළියම: ආසාදිත පත්‍ර කපා පුළුස්සා දමන්න.",
-    "rust": "හේතුව: දිලීර. පිළියම: පත්‍ර මතුපිටට සල්ෆර් කුඩු ඉසින්න.",
-    "mosaic virus": "හේතුව: වෛරස්. පිළියම: රෝගී පැල වහාම ඉවත් කරන්න.",
-    "powdery mildew": "හේතුව: වියළි කාලගුණය හා දිලීර. පිළියම: පොටෑසියම් බයිකාබනේට් භාවිතා කරන්න.",
-    "downy mildew": "හේතුව: තෙත් කාලගුණය. පිළියම: වාතාශ්‍රය වැඩි කරන්න.",
-    "root rot": "හේතුව: ජලය වැඩි වීම. පිළියම: ජලය බැසයාම විධිමත් කරන්න.",
-    "wilt": "හේතුව: පාංශු බැක්ටීරියා. පිළියම: පස ජීවානුහරණය කරන්න.",
-    "canker": "හේතුව: ශාකයේ තුවාල හරහා එන බැක්ටීරියා. පිළියම: තුවාල ආලේපන යොදන්න.",
-    "black spot": "හේතුව: දිලීර. පිළියම: කොළ මතට වතුර දැමීම නවත්වන්න.",
-    "anthracnose": "හේතුව: දිලීර. පිළියම: තඹ අඩංගු දිලීර නාශක යොදන්න.",
-    "sooty mold": "හේතුව: කෘමි ස්‍රාවයන්. පිළියම: කෘමීන් පාලනය කරන්න.",
-    "dieback": "හේතුව: පෝෂක ඌනතාවය. පිළියම: සමබර පොහොර යොදන්න.",
-    "clubroot": "හේතුව: පසෙහි ආම්ලිකතාවය. පිළියම: පසට හුණු (Lime) එක් කරන්න."
+    "leaf curl": "හේතුව: සුදු මැස්සන් මගින් බෝවන වෛරසයකි. පිළියම: කොහොඹ තෙල් දියරය ඉසින්න.",
+    "fungal infection": "හේතුව: අධික තෙතමනය සහ දිලීර. පිළියම: නිර්දේශිත දිලීර නාශකයක් භාවිතා කරන්න.",
+    "blight": "හේතුව: බැක්ටීරියා ආසාදනය. පිළියම: රෝගී පත්‍ර කපා ඉවත් කර පුළුස්සා දමන්න.",
+    "rust": "හේතුව: දිලීර නිසා ඇතිවන මලකඩ රෝගය. පිළියම: පත්‍ර මතුපිටට සල්ෆර් කුඩු ඉසින්න.",
+    "mosaic virus": "හේතුව: කුඩිත්තන් මගින් බෝවන වෛරසයකි. පිළියම: රෝගී ශාක වහාම උදුරා දමන්න.",
+    "powdery mildew": "හේතුව: වියළි කාලගුණය නිසා ඇතිවන දිලීර. පිළියම: කිරි මිශ්‍ර ජලය හෝ පොටෑසියම් බයිකාබනේට් ඉසින්න.",
+    "downy mildew": "හේතුව: අධික සිසිල් සහ තෙත් කාලගුණය. පිළියම: ශාක අතර පරතරය වැඩි කර වාතාශ්‍රය ලබා දෙන්න.",
+    "root rot": "හේතුව: පසෙහි ජලය රැඳීම නිසා මුල් කුණු වීම. පිළියම: ජලය බැසයාම විධිමත් කර ජලය දැමීම සීමා කරන්න.",
+    "wilt": "හේතුව: පස හරහා එන බැක්ටීරියා හෝ දිලීර. පිළියම: පස ජීවානුහරණය කර නව පැල සිටුවන්න.",
+    "black spot": "හේතුව: පත්‍ර මත ජලය රැඳීම නිසා එන දිලීර. පිළියම: පත්‍ර මතට වතුර දැමීමෙන් වළකින්න.",
+    "anthracnose": "හේතුව: දිලීර ආසාදනය. පිළියම: තඹ අඩංගු දිලීර නාශකයක් (Copper Fungicide) භාවිතා කරන්න.",
+    "sooty mold": "හේතුව: කෘමීන්ගේ පැණි ස්‍රාවයන් මත වැඩෙන දිලීර. පිළියම: පළමුව කෘමීන් පාලනය කරන්න.",
+    "dieback": "හේතුව: අතු අග සිට මැරීගෙන ඒම. පිළියම: මැරුණු අතු කපා ඉවත් කර පොහොර යොදන්න.",
+    "leaf spot": "හේතුව: පත්‍ර මත ඇතිවන විවිධ දිලීර. පිළියම: නිර්දේශිත දිලීර නාශක දියරයක් භාවිතා කරන්න.",
+    "clubroot": "හේතුව: පසෙහි ඇති ක්ෂුද්‍ර ජීවීන්. පිළියම: පසෙහි ආම්ලිකතාවය අඩු කිරීමට හුණු (Lime) එක් කරන්න."
 };
 
-// 2. Image Upload & Random Result Logic
+// 2. Image Upload Logic (Scroll වෙන්නේ නැතිව)
 uploadArea.addEventListener('click', () => imageInput.click());
 
 imageInput.addEventListener('change', function() {
@@ -35,14 +35,15 @@ imageInput.addEventListener('change', function() {
             preview.src = e.target.result;
             previewContainer.style.display = 'block';
             
-            // Leda 15n ekak random select කරනවා upload කළාම පෙන්වන්න
+            // Randomly select a disease from the list
             const keys = Object.keys(diseaseData);
             const randomDisease = keys[Math.floor(Math.random() * keys.length)];
             const details = diseaseData[randomDisease];
 
+            // Result එක පෙන්වනවා (Scroll කරන්නේ නෑ)
             resultDisplay.innerHTML = `
                 <div class="result-card">
-                    <h3 style="color: #2e7d32; margin-bottom: 10px;">Analysis Results: ${randomDisease.toUpperCase()}</h3>
+                    <h3 style="color: #2e7d32; margin-bottom: 10px;">Detected: ${randomDisease.toUpperCase()}</h3>
                     <p>${details}</p>
                 </div>
             `;
@@ -51,7 +52,7 @@ imageInput.addEventListener('change', function() {
     }
 });
 
-// 3. Search Function (Database eke thiyෙන ඒවා search කරන්න)
+// 3. Search Button Logic
 function performSearch() {
     const query = searchInput.value.toLowerCase().trim();
     if(query) {
@@ -60,7 +61,7 @@ function performSearch() {
             if (disease.includes(query)) {
                 resultDisplay.innerHTML = `
                     <div class="result-card" style="border-left-color: #1976d2;">
-                        <h3 style="color: #1976d2; margin-bottom: 10px;">Result for: ${disease.toUpperCase()}</h3>
+                        <h3 style="color: #1976d2; margin-bottom: 10px;">Information: ${disease.toUpperCase()}</h3>
                         <p>${diseaseData[disease]}</p>
                     </div>
                 `;
@@ -69,9 +70,8 @@ function performSearch() {
             }
         }
         if (!found) {
-            resultDisplay.innerHTML = `<p style="color:red; padding:15px;">"${query}" රෝගය හමු වූයේ නැත.</p>`;
+            resultDisplay.innerHTML = `<p style="color:red; padding:15px;">"${query}" රෝගය දත්ත පද්ධතියේ නැත.</p>`;
         }
-        resultDisplay.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
@@ -80,11 +80,16 @@ const voiceBtn = document.getElementById('voiceBtn');
 if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
     recognition.lang = 'en-US';
-    voiceBtn.addEventListener('click', () => recognition.start());
+    voiceBtn.addEventListener('click', () => {
+        recognition.start();
+        voiceBtn.style.color = 'red';
+    });
     recognition.onresult = (event) => {
-        searchInput.value = event.results[0][0].transcript;
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript;
         performSearch();
     };
+    recognition.onend = () => { voiceBtn.style.color = '#2e7d32'; };
 }
 
 function removeImage() {
