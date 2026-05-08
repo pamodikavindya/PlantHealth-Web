@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Disease Identifier | AgriDoctor</title>
+    <title>AgriDoctor | දළු රෝග හඳුනාගැනීම</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,8 +12,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <i class="fas fa-leaf"></i>
-                <span>AgriDoctor</span>
+                <i class="fas fa-leaf"></i> <span>AgriDoctor</span>
             </div>
             <nav class="nav">
                 <a href="#upload">Identify</a>
@@ -27,6 +26,9 @@
         <div class="container">
             <h1>Plant Disease Identification<br>දළු රෝග හඳුනාගැනීම</h1>
             <p>Upload an image of your plant to identify diseases and get treatment recommendations</p>
+            <div class="hero-image">
+                <img src="hand-giving-growing-plant_.jpg" alt="Plant Health">
+            </div>
         </div>
     </section>
 
@@ -35,7 +37,7 @@
             <div class="search-box-container">
                 <h2>Quick Disease Search</h2>
                 <div class="search-bar">
-                    <input type="text" id="diseaseSearchInput" placeholder="Enter disease name (e.g. Tomato)...">
+                    <input type="text" id="diseaseSearchInput" placeholder="Enter disease name...">
                     <button type="button" id="voiceBtn" onclick="startVoiceSearch()">
                         <i class="fas fa-microphone"></i>
                     </button>
@@ -51,9 +53,9 @@
     <section id="upload" class="upload-section">
         <div class="container">
             <div class="upload-box-main">
-                <h2>Upload Diseased Plant Image</h2>
+                <h2>Identify Your Plant Disease</h2>
                 <div class="upload-area" id="uploadArea">
-                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #2e7d32;"></i>
                     <p>Drag & Drop your image here or click to browse</p>
                     <input type="file" id="imageInput" accept="image/*" hidden>
                     <button class="btn-primary" id="uploadBtn">Choose File</button>
@@ -62,7 +64,6 @@
                 <div id="previewContainer" style="display: none;">
                     <h3>Image Preview</h3>
                     <img id="preview" src="" alt="Preview">
-                    <br>
                     <button id="removeBtn">Remove Image</button>
                 </div>
 
@@ -71,47 +72,6 @@
                     <div class="results-placeholder">
                         <p>Upload an image to see disease analysis</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="info" class="info-section">
-        <div class="container">
-            <h2 class="section-title">Common Plant Diseases | සාමාන්‍ය දළු රෝග</h2>
-            <div class="disease-cards">
-                <div class="disease-card">
-                    <i class="fas fa-fungus"></i>
-                    <h3>Fungal Diseases</h3>
-                    <p><strong>Causes:</strong> High humidity.<br><strong>Remedies:</strong> Fungicides.</p>
-                </div>
-                <div class="disease-card">
-                    <i class="fas fa-bacteria"></i>
-                    <h3>Bacterial Diseases</h3>
-                    <p><strong>Causes:</strong> Contaminated tools.<br><strong>Remedies:</strong> Copper sprays.</p>
-                </div>
-                <div class="disease-card">
-                    <i class="fas fa-virus"></i>
-                    <h3>Viral Diseases</h3>
-                    <p><strong>Causes:</strong> Pests like aphids.<br><strong>Remedies:</strong> Removal.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacts" class="contacts-section">
-        <div class="container">
-            <h2 class="section-title">Agriculture Support</h2>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>Hotline</h3>
-                    <p>Call 1920</p>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Website</h3>
-                    <p>doa.gov.lk</p>
                 </div>
             </div>
         </div>
