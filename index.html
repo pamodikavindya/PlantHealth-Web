@@ -63,11 +63,12 @@
                 <input type="file" id="imageInput" accept="image/*" hidden>
                 <button class="btn btn-primary" id="uploadBtn">Choose File</button>
             </div>
-            <div class="preview-container" id="previewContainer">
-                <div class="preview-header">
-                    <h3>Image Preview</h3>
-                    <button class="btn btn-small" id="removeBtn">Remove</button>
-                </div>
+           <div id="previewContainer" style="display: none;">
+    <h3>Image Preview</h3>
+    <img id="preview" src="" alt="Preview">
+    <br>
+    <button id="removeBtn">Remove</button>
+</div>
                 <img id="preview" src="" alt="Preview">
                 <div class="analysis-section">
                     <h3>Analysis Results</h3>
