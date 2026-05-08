@@ -11,7 +11,7 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo"><i class="fas fa-leaf"></i> <h1><span>AgriDoctor</span></div></h1>
+            <div class="logo"><i class="fas fa-leaf"></i> <span>AgriDoctor</span></div>
             <nav class="nav">
                 <a href="#upload">Identify</a>
                 <a href="#info">Diseases</a>
@@ -38,6 +38,7 @@
                     <button type="button" id="voiceBtn"><i class="fas fa-microphone"></i></button>
                     <button type="button" id="searchBtn" onclick="performSearch()"><i class="fas fa-search"></i> Search</button>
                 </div>
+                <div id="searchResultDisplay"></div> 
             </div>
         </div>
     </section>
@@ -55,10 +56,11 @@
 
                 <div id="previewContainer" style="display: none;">
                     <img id="preview" src="" alt="Preview">
+                    <br>
                     <button id="removeBtn" onclick="removeImage()">Remove Image</button>
                 </div>
 
-                <div id="resultDisplay" class="analysis-results"></div>
+                <div id="resultDisplay"></div>
             </div>
         </div>
     </section>
