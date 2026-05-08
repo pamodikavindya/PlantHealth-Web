@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Disease Identifier | දළු රෝග හඳුනාගැනීම</title>
+    <title>Plant Disease Identifier | AgriDoctor</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,49 +27,45 @@
         <div class="container">
             <h1>Plant Disease Identification<br>දළු රෝග හඳුනාගැනීම</h1>
             <p>Upload an image of your plant to identify diseases and get treatment recommendations</p>
-            <div class="hero-image">
-                <img src="hand-giving-growing-plant_.jpg" alt="Plant Health">
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box-container">
+                <h2>Quick Disease Search</h2>
+                <div class="search-bar">
+                    <input type="text" id="diseaseSearchInput" placeholder="Enter disease name (e.g. Tomato)...">
+                    <button type="button" id="voiceBtn" onclick="startVoiceSearch()">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button type="button" id="searchBtn" onclick="performSearch()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div id="searchResult"></div>
             </div>
         </div>
     </section>
-<section class="search-section">
-    <div class="container">
-        <div class="search-box-container">
-            <h2>Quick Disease Search</h2>
-            <div class="search-bar">
-                <!-- ID eka diseaseSearchInput kiyala thiyenna oni -->
-                <input type="text" id="diseaseSearchInput" placeholder="Enter disease name...">
-                
-                <!-- onclick="startVoiceSearch()" eka thiyenna oni -->
-                <button type="button" id="voiceBtn" onclick="startVoiceSearch()">
-                    <i class="fas fa-microphone"></i>
-                </button>
-                
-                <!-- onclick="performSearch()" eka thiyenna oni -->
-                <button type="button" id="searchBtn" onclick="performSearch()">
-                    <i class="fas fa-search"></i> Search
-                </button>
-            </div>
-            <div id="searchResult" class="search-result-display"></div>
-        </div>
-    </div>
-</section>
+
     <section id="upload" class="upload-section">
         <div class="container">
-            <h2>Upload Diseased Plant Image<br>රෝගී පැලේ පින්තූරය එක් කරන්න</h2>
-            <div class="upload-area" id="uploadArea">
-                <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <p class="upload-text">Drag & Drop your image here<br>or click to browse</p>
-                <input type="file" id="imageInput" accept="image/*" hidden>
-                <button class="btn btn-primary" id="uploadBtn">Choose File</button>
-            </div>
-           <div id="previewContainer" style="display: none;">
-    <h3>Image Preview</h3>
-    <img id="preview" src="" alt="Preview">
-    <br>
-    <button id="removeBtn">Remove</button>
-</div>
-                <img id="preview" src="" alt="Preview">
+            <div class="upload-box-main">
+                <h2>Upload Diseased Plant Image</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <p>Drag & Drop your image here or click to browse</p>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <button class="btn-primary" id="uploadBtn">Choose File</button>
+                </div>
+
+                <div id="previewContainer" style="display: none;">
+                    <h3>Image Preview</h3>
+                    <img id="preview" src="" alt="Preview">
+                    <br>
+                    <button id="removeBtn">Remove Image</button>
+                </div>
+
                 <div class="analysis-section">
                     <h3>Analysis Results</h3>
                     <div class="results-placeholder">
@@ -82,31 +78,22 @@
 
     <section id="info" class="info-section">
         <div class="container">
-            <h2>Common Plant Diseases<br>සාමාන්‍ය දළු රෝග</h2>
+            <h2 class="section-title">Common Plant Diseases | සාමාන්‍ය දළු රෝග</h2>
             <div class="disease-cards">
                 <div class="disease-card">
-                    <div class="disease-icon"><i class="fas fa-fungus"></i></div>
-                    <h3>Fungal Diseases<br>දිලීර රෝග</h3>
-                    <div class="disease-info">
-                        <p><strong>Causes:</strong> High humidity, wet leaves.</p>
-                        <p><strong>Remedies:</strong> Fungicides, neem oil.</p>
-                    </div>
+                    <i class="fas fa-fungus"></i>
+                    <h3>Fungal Diseases</h3>
+                    <p><strong>Causes:</strong> High humidity.<br><strong>Remedies:</strong> Fungicides.</p>
                 </div>
                 <div class="disease-card">
-                    <div class="disease-icon"><i class="fas fa-bacteria"></i></div>
-                    <h3>Bacterial Diseases<br>බැක්ටීරියා රෝග</h3>
-                    <div class="disease-info">
-                        <p><strong>Causes:</strong> Contaminated tools.</p>
-                        <p><strong>Remedies:</strong> Copper sprays.</p>
-                    </div>
+                    <i class="fas fa-bacteria"></i>
+                    <h3>Bacterial Diseases</h3>
+                    <p><strong>Causes:</strong> Contaminated tools.<br><strong>Remedies:</strong> Copper sprays.</p>
                 </div>
                 <div class="disease-card">
-                    <div class="disease-icon"><i class="fas fa-virus"></i></div>
-                    <h3>Viral Diseases<br>වෛරස් රෝග</h3>
-                    <div class="disease-info">
-                        <p><strong>Causes:</strong> Pests like aphids.</p>
-                        <p><strong>Remedies:</strong> Remove infected plants.</p>
-                    </div>
+                    <i class="fas fa-virus"></i>
+                    <h3>Viral Diseases</h3>
+                    <p><strong>Causes:</strong> Pests like aphids.<br><strong>Remedies:</strong> Removal.</p>
                 </div>
             </div>
         </div>
@@ -114,34 +101,24 @@
 
     <section id="contacts" class="contacts-section">
         <div class="container">
-            <h2>Sri Lankan Agriculture Support<br>ශ්‍රී ලංකා කෘෂි සහාය</h2>
+            <h2 class="section-title">Agriculture Support</h2>
             <div class="contact-cards">
                 <div class="contact-card">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <i class="fas fa-phone-alt"></i>
                     <h3>Hotline</h3>
-                    <p>Department of Agriculture</p>
-                    <div class="contact-info"><a href="tel:1920" style="text-decoration:none; color:#2d5a27; font-weight:bold;">1920</a></div>
+                    <p>Call 1920</p>
                 </div>
                 <div class="contact-card">
-                    <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                    <i class="fas fa-globe"></i>
                     <h3>Website</h3>
-                    <p>Official Portal</p>
-                    <div class="contact-info"><a href="https://doa.gov.lk" target="_blank" style="text-decoration:none; color:#2d5a27; font-weight:bold;">doa.gov.lk</a></div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h3>Local Offices</h3>
-                    <p>Provincial Offices</p>
-                    <div class="contact-info"><a href="https://doa.gov.lk/contact-us/" target="_blank" style="text-decoration:none; color:#2d5a27; font-weight:bold;">Contact us</a></div>
+                    <p>doa.gov.lk</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 AgriDoctor - Developed for Sri Lankan Agriculture</p>
-        </div>
+        <p>&copy; 2026 AgriDoctor - Developed for Sri Lankan Agriculture</p>
     </footer>
 
     <script src="script.js"></script>
