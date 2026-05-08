@@ -1,3 +1,83 @@
+// --- AgriDoctor Full Disease Database (15 Diseases) ---
+const diseaseData = {
+    "tomato blight": {
+        sinhalaName: "තක්කාලි කොළ මැළවීම (Tomato Blight)",
+        causes: "අධික තෙතමනය සහ Alternaria දිලීරය.",
+        remedy: "පීඩිත අතු ඉවත් කරන්න. මැන්කොසෙබ් වැනි දිලීර නාශකයක් භාවිතා කරන්න."
+    },
+    "paddy blast": {
+        sinhalaName: "වී වගාවේ කොළ පාළුව (Paddy Blast)",
+        causes: "Magnaporthe oryzae දිලීරය. නයිට්‍රජන් පොහොර වැඩි වීම.",
+        remedy: "පොහොර භාවිතය කළමනාකරණය සහ නියමිත දිලීර නාශක යෙදීම."
+    },
+    "bacterial leaf blight": {
+        sinhalaName: "බැක්ටීරියා කොළ පාලුව (Paddy BLB)",
+        causes: "Xanthomonas බැක්ටීරියාව. වර්ෂාව සහ සුළඟ මගින් පැතිරේ.",
+        remedy: "පොටෑසියම් පොහොර යොදන්න. රෝගී ශාක ඉවත් කර විනාශ කරන්න."
+    },
+    "coconut mite": {
+        sinhalaName: "පොල් මයිටා උවදුර (Coconut Mite)",
+        causes: "Aceria guerreronis මයිටාවා. වියළි කාලගුණය බලපායි.",
+        remedy: "කොහොඹ තෙල් මිශ්‍රණය ඉසීම හෝ නිර්දේශිත රසායනික ප්‍රතිකාර."
+    },
+    "banana wilt": {
+        sinhalaName: "කෙසෙල් පැනමා රෝගය (Panama Wilt)",
+        causes: "Fusarium දිලීරය. පස මගින් රෝගය පැතිරේ.",
+        remedy: "රෝගී පඳුරු මුලින්ම විනාශ කරන්න. ජලාපවහනය දියුණු කරන්න."
+    },
+    "papaya ringspot": {
+        sinhalaName: "පැපොල් වෛරස් රෝගය (Papaya Ringspot)",
+        causes: "කුඩිත්තන් (Aphids) මගින් පතුරුවන වෛරසයකි.",
+        remedy: "රෝගී ගස් ඉවත් කරන්න. වෛරසය පතුරුවන කෘමීන් පාලනය කරන්න."
+    },
+    "chilli leaf curl": {
+        sinhalaName: "මිරිස් කොළ කොණ්ඩ වීම (Leaf Curl)",
+        causes: "පැළ මැක්කන් සහ මයිටාවන් මගින් පටුරුවන වෛරස්.",
+        remedy: "කෘමීන් පාලනය සඳහා කොහොඹ නිස්සාරණය හෝ කෘමිනාශක භාවිතා කරන්න."
+    },
+    "potato late blight": {
+        sinhalaName: "අර්තාපල් අංගමාරය (Late Blight)",
+        causes: "Phytophthora infestans දිලීරය. සීතල සහ තෙත් කාලගුණය.",
+        remedy: "දිලීර නාශක යෙදීම සහ බෝග මාරුව සිදු කිරීම."
+    },
+    "cinnamon wood borer": {
+        sinhalaName: "කුරුඳු කඳ විදින පණුවා (Wood Borer)",
+        causes: "කඳ තුලට විදින කෘමි කීටයන්.",
+        remedy: "කඳ සිදුරු තුලට නිර්දේශිත කෘමිනාශක ඇතුළු කිරීම හෝ හානි වූ අතු ඉවත් කිරීම."
+    },
+    "mango hopper": {
+        sinhalaName: "අඹ මල් කීඩෑවා (Mango Hopper)",
+        causes: "Idioscopus කෘමීන්. මල් පිපෙන කාලයට හානි කරයි.",
+        remedy: "මල් පිපීමට පෙර සහ පසු නිසි කෘමි පාලනය."
+    },
+    "rubber white root": {
+        sinhalaName: "රබර් සුදු මුල් රෝගය (White Root)",
+        causes: "Rigidoporus microporus දිලීරය.",
+        remedy: "මුල් වලට සල්ෆර් කුඩු යෙදීම සහ ආසාදිත කොටස් පිරිසිදු කිරීම."
+    },
+    "citrus canker": {
+        sinhalaName: "දෙහි කුෂ්ඨ රෝගය (Citrus Canker)",
+        causes: "Xanthomonas බැක්ටීරියාව. තුවාල හරහා ශාකයට ඇතුල් වේ.",
+        remedy: "තඹ අඩංගු බැක්ටීරියා නාශක භාවිතය."
+    },
+    "bean fly": {
+        sinhalaName: "බෝංචි මැස්සා (Bean Fly)",
+        causes: "Ophiomyia phaseoli මැස්සා කඳ තුල බිත්තර දැමීම.",
+        remedy: "පැළවී දින 7-14 තුල නිර්දේශිත කෘමිනාශක යෙදීම."
+    },
+    "coffee leaf rust": {
+        sinhalaName: "කෝපි කොළ මලකඩ රෝගය (Leaf Rust)",
+        causes: "Hemileia vastatrix දිලීරය.",
+        remedy: "තඹ අඩංගු දිලීර නාශක භාවිතය සහ නිසි පරතරය තබා සිටුවීම."
+    },
+    "onion purple blotch": {
+        sinhalaName: "ලූණු දම් ලප රෝගය (Purple Blotch)",
+        causes: "Alternaria porri දිලීරය. අධික පිනි සහිත කාලගුණය.",
+        remedy: "දිලීර නාශක ඉසීම සහ නිසි ජලාපවහනය."
+    }
+};
+
+// --- DOM Elements ---
 const imageInput = document.getElementById('imageInput');
 const uploadBtn = document.getElementById('uploadBtn');
 const uploadArea = document.getElementById('uploadArea');
@@ -5,168 +85,29 @@ const preview = document.getElementById('preview');
 const previewContainer = document.getElementById('previewContainer');
 const removeBtn = document.getElementById('removeBtn');
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', function() {
-    // Upload button click triggers file input
-    uploadBtn.addEventListener('click', function() {
-        imageInput.click();
-    });
-    
-    // File input change
-    imageInput.addEventListener('change', handleFileSelect);
-    
-    // Remove button
-    removeBtn.addEventListener('click', resetUpload);
-    
-    // Drag and drop functionality
-    uploadArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        uploadArea.classList.add('dragover');
-    });
-    
-    uploadArea.addEventListener('dragleave', function() {
-        uploadArea.classList.remove('dragover');
-    });
-    
-    uploadArea.addEventListener('drop', function(e) {
+// --- Event Listeners ---
+document.addEventListener('DOMContentLoaded', () => {
+    uploadBtn.onclick = () => imageInput.click();
+    uploadArea.onclick = () => imageInput.click();
+    imageInput.onchange = handleFileSelect;
+    removeBtn.onclick = resetUpload;
+
+    uploadArea.ondragover = (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); };
+    uploadArea.ondragleave = () => uploadArea.classList.remove('dragover');
+    uploadArea.ondrop = (e) => {
         e.preventDefault();
         uploadArea.classList.remove('dragover');
-        
         if (e.dataTransfer.files.length) {
             imageInput.files = e.dataTransfer.files;
             handleFileSelect();
         }
-    });
-    
-    // Click on upload area to trigger file input
-    uploadArea.addEventListener('click', function() {
-        imageInput.click();
-    });
+    };
 });
 
-// Handle file selection
-function handleFileSelect() {
-    const file = imageInput.files[0];
-    
-    if (file) {
-        // Check if file is an image
-        if (!file.type.match('image.*')) {
-            alert('Please select an image file');
-            return;
-        }
-        
-        // Create preview
-        const reader = new FileReader();
-        
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            previewContainer.style.display = 'block';
-            
-            // Simulate analysis after a delay
-            simulateAnalysis();
-        };
-        
-        reader.readAsDataURL(file);
-    }
-}
-
-// Reset upload
-function resetUpload() {
-    imageInput.value = '';
-    preview.src = '';
-    previewContainer.style.display = 'none';
-    
-    // Reset analysis section
-    const resultsPlaceholder = document.querySelector('.results-placeholder');
-    resultsPlaceholder.innerHTML = '<p>Upload an image to see disease analysis</p>';
-}
-
-// Simulate analysis (in a real app, this would connect to an API)
-function simulateAnalysis() {
-    const resultsPlaceholder = document.querySelector('.results-placeholder');
-    resultsPlaceholder.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Analyzing image...</div>';
-    
-    setTimeout(() => {
-        // Simulate different results based on random selection
-        const diseases = [
-            {
-                name: "Fungal Infection",
-                confidence: "85%",
-                description: "Your plant shows signs of a fungal infection, likely caused by high humidity and poor air circulation.",
-                treatment: "Apply fungicide and improve ventilation. Remove affected leaves."
-            },
-            {
-                name: "Bacterial Spot",
-                confidence: "72%",
-                description: "The spots on leaves indicate a bacterial infection, possibly from contaminated water or tools.",
-                treatment: "Use copper-based bactericide and sterilize gardening tools."
-            },
-            {
-                name: "Healthy Plant",
-                confidence: "91%",
-                description: "Your plant appears healthy with no significant signs of disease.",
-                treatment: "Continue current care routine. Monitor for any changes."
-            }
-        ];
-        
-        const result = diseases[Math.floor(Math.random() * diseases.length)];
-        
-        resultsPlaceholder.innerHTML = `
-            <div class="analysis-result">
-                <div class="result-header">
-                    <h4>${result.name}</h4>
-                    <span class="confidence">Confidence: ${result.confidence}</span>
-                </div>
-                <div class="result-description">
-                    <p>${result.description}</p>
-                </div>
-                <div class="result-treatment">
-                    <h5>Recommended Treatment:</h5>
-                    <p>${result.treatment}</p>
-                </div>
-                <button class="btn btn-primary" style="margin-top: 15px;">View Detailed Report</button>
-            </div>
-        `;
-    }, 2000);
-}
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-        });
-    });
-});
-// --- AgriDoctor Disease Database ---
-const diseaseData = {
-    "tomato blight": {
-        sinhalaName: "තක්කාලි කොළ මැළවීම",
-        causes: "අධික තෙතමනය සහ Alternaria දිලීරය.",
-        remedy: "පීඩිත අතු ඉවත් කරන්න. මැන්කොසෙබ් වැනි දිලීර නාශකයක් භාවිතා කරන්න."
-    },
-    "paddy blast": {
-        sinhalaName: "වී වගාවේ කොළ පාළුව",
-        causes: "Magnaporthe oryzae දිලීරය. නයිට්‍රජන් පොහොර වැඩි වීම.",
-        remedy: "පොහොර භාවිතය කළමනාකරණය සහ නියමිත දිලීර නාශක යෙදීම."
-    },
-    // ... (අනිත් රෝග 13 මෙතන තියෙනවා කියලා හිතන්න)
-};
-
-// --- Search Function (HTML onclick එකෙන් වැඩ කරන්නේ මේකයි) ---
+// --- Search Functionality ---
 function performSearch() {
-    const queryInput = document.getElementById('diseaseSearchInput');
+    const query = document.getElementById('diseaseSearchInput').value.toLowerCase().trim();
     const resultDisplay = document.getElementById('searchResult');
-
-    if (!queryInput || !resultDisplay) return;
-
-    const query = queryInput.value.toLowerCase().trim();
 
     if (query === "") {
         resultDisplay.innerHTML = "<p style='color:orange;'>කරුණාකර රෝගයක නමක් ඇතුළත් කරන්න...</p>";
@@ -178,8 +119,8 @@ function performSearch() {
 
     if (disease) {
         resultDisplay.innerHTML = `
-            <div class="result-card" style="background: white; padding: 20px; border-radius: 12px; border-left: 8px solid #2e7d32; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 20px; text-align: left;">
-                <h3 style="color: #2e7d32; margin-bottom: 10px;">${disease.sinhalaName}</h3>
+            <div class="result-card">
+                <h3><i class="fas fa-leaf"></i> ${disease.sinhalaName}</h3>
                 <p><strong>⚠️ හේතුව:</strong> ${disease.causes}</p>
                 <p style="margin-top: 10px;"><strong>✅ පිළියම:</strong> ${disease.remedy}</p>
             </div>`;
@@ -188,21 +129,67 @@ function performSearch() {
     }
 }
 
-// --- Voice Search Function ---
+// --- Voice Search Functionality ---
 function startVoiceSearch() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return alert("Voice search support කරන්නේ නැත.");
+    if (!SpeechRecognition) return alert("Voice recognition support කරන්නේ නැත.");
     
     const recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
     const voiceBtn = document.getElementById('voiceBtn');
     
-    voiceBtn.style.color = "red";
+    voiceBtn.classList.add('voice-active');
+
     recognition.onresult = (event) => {
         document.getElementById('diseaseSearchInput').value = event.results[0][0].transcript;
-        voiceBtn.style.color = "";
+        voiceBtn.classList.remove('voice-active');
         performSearch();
     };
-    recognition.onerror = () => voiceBtn.style.color = "";
+
+    recognition.onerror = () => voiceBtn.classList.remove('voice-active');
+    recognition.onend = () => voiceBtn.classList.remove('voice-active');
+    
     recognition.start();
 }
+
+// --- Image Handling & Analysis Simulation ---
+function handleFileSelect() {
+    const file = imageInput.files[0];
+    if (file && file.type.match('image.*')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            preview.src = e.target.result;
+            previewContainer.style.display = 'block';
+            simulateAnalysis();
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function resetUpload() {
+    imageInput.value = '';
+    previewContainer.style.display = 'none';
+    document.querySelector('.results-placeholder').innerHTML = '<p>Upload an image to see disease analysis</p>';
+}
+
+function simulateAnalysis() {
+    const placeholder = document.querySelector('.results-placeholder');
+    placeholder.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> පින්තූරය විශ්ලේෂණය කරමින්...</div>';
+    
+    setTimeout(() => {
+        placeholder.innerHTML = `
+            <div class="analysis-result">
+                <h4>සම්පූර්ණයි! (Analysis Complete)</h4>
+                <p>පින්තූරය සාර්ථකව පරීක්ෂා කරන ලදී. වැඩිදුර තොරතුරු සඳහා Search box එක භාවිතා කරන්න.</p>
+            </div>`;
+    }, 2000);
+}
+
+// Smooth scrolling
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.onclick = function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+    };
+});
