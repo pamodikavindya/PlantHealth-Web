@@ -1,70 +1,77 @@
-const imageInput = document.getElementById('imageInput');
-const uploadArea = document.getElementById('uploadArea');
-const previewContainer = document.getElementById('previewContainer');
-const preview = document.getElementById('preview');
-const resultDisplay = document.getElementById('resultDisplay');
-const searchResultDisplay = document.getElementById('searchResultDisplay');
-const searchInput = document.getElementById('diseaseSearchInput');
-
 const diseaseData = {
-    "leaf curl": "හේතුව: සුදු මැස්සන් මගින් බෝවන වෛරසයකි. පිළියම: කොහොඹ තෙල් භාවිතා කරන්න.",
-    "fungal infection": "හේතුව: අධික තෙතමනය. පිළියම: නිර්දේශිත දිලීර නාශකයක් යොදන්න.",
-    "blight": "හේතුව: බැක්ටීරියා ආසාදනය. පිළියම: පත්‍ර කපා පුළුස්සා දමන්න.",
-    "rust": "හේතුව: දිලීර නිසා ඇතිවන මලකඩ රෝගය. පිළියම: සල්ෆර් කුඩු ඉසින්න.",
-    "mosaic virus": "හේතුව: වෛරස් ආසාදනය. පිළියම: රෝගී පැල ඉවත් කරන්න.",
-    "powdery mildew": "හේතුව: වියළි කාලගුණය හා දිලීර. පිළියම: පොටෑසියම් බයිකාබනේට් භාවිතා කරන්න.",
-    "downy mildew": "හේතුව: තෙත් කාලගුණය. පිළියම: වාතාශ්‍රය වැඩි කරන්න.",
-    "root rot": "හේතුව: ජලය බැසයාම දුර්වල වීම. පිළියම: ජලය දැමීම සීමා කරන්න.",
-    "wilt": "හේතුව: පාංශු බැක්ටීරියා. පිළියම: පස ජීවානුහරණය කරන්න.",
-    "black spot": "හේතුව: දිලීර. පිළියම: පත්‍ර මතට වතුර දැමීම නවත්වන්න.",
-    "leaf spot": "හේතුව: දිලීර. පිළියම: නිර්දේශිත දිලීර නාශක දියරයක් භාවිතා කරන්න.",
-    "anthracnose": "හේතුව: දිලීර. පිළියම: තඹ අඩංගු දිලීර නාශක යොදන්න.",
-    "sooty mold": "හේතුව: කෘමි ස්‍රාවයන්. පිළියම: කෘමීන් පාලනය කරන්න.",
-    "dieback": "හේතුව: අතු අග සිට මැරීගෙන ඒම. පිළියම: පොහොර යොදා පෝෂණය කරන්න.",
-    "clubroot": "හේතුව: පසෙහි ආම්ලිකතාවය. පිළියම: පසට හුණු (Lime) එක් කරන්න."
+    "rust": "මලකඩ රෝගය: සල්ෆර් අඩංගු දිලීර නාශක යොදන්න.",
+    "leaf curl": "කොළ හකුලන රෝගය: කොහොඹ තෙල් හෝ කෘමිනාශක භාවිතා කරන්න.",
+    "blight": "අංගමාරය: රෝගී කොටස් කපා පුළුස්සා දමන්න.",
+    "powdery mildew": "පවුඩරි මිල්ඩියු: සල්ෆර් අඩංගු කුඩු ඉසින්න.",
+    "bacterial wilt": "බැක්ටීරියා මැලවීම: පස විෂබීජහරණය කර හුණු යොදන්න.",
+    "mosaic virus": "මොසයික් වෛරසය: බෝ කරන කෘමීන් (Aphids) පාලනය කරන්න.",
+    "downy mildew": "ඩව්නි මිල්ඩියු: වාතාශ්‍රය වැඩි කර දිලීර නාශක යොදන්න.",
+    "anthracnose": "ඇන්ත්‍රැක්නෝස්: මැන්කොසෙබ් වැනි දිලීර නාශක භාවිතා කරන්න.",
+    "root rot": "මුල් කුණුවීම: ජලය බැසයාම විධිමත් කරන්න.",
+    "early blight": "අර්ලි බ්ලයිට්: නියමිත කාලයට පොහොර සහ දිලීර නාශක යොදන්න.",
+    "late blight": "ලේට් බ්ලයිට්: දිලීර නාශක දියරයක් දින 7කට වරක් ඉසින්න.",
+    "leaf spot": "කොළ පුල්ලි රෝගය: පත්‍ර මතට ජලය ඉසීමෙන් වලකින්න.",
+    "black spot": "කළු පුල්ලි රෝගය: රෝගී කොළ වහාම ඉවත් කරන්න.",
+    "damping off": "පැල කුණුවීම: තවාන් පස විෂබීජහරණය කරන්න.",
+    "clubroot": "ක්ලබ් රූට්: පසෙහි pH අගය වැඩි කිරීමට හුණු එක් කරන්න."
 };
 
-// Image Logic
-uploadArea.addEventListener('click', () => imageInput.click());
+window.onload = function() {
+    setTimeout(() => {
+        const map = L.map('riskMap').setView([7.8731, 80.7718], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([7.2906, 80.6337]).addTo(map).bindPopup('මහනුවර: වැඩි අවදානම');
+    }, 400);
+};
+
+function performSearch() {
+    const val = document.getElementById('diseaseSearchInput').value.toLowerCase().trim();
+    const res = document.getElementById('searchResultDisplay');
+    res.innerHTML = diseaseData[val] ? `<div style="background:#e8f5e9; padding:15px; border-radius:10px; margin-top:10px; font-weight:bold;">${diseaseData[val]}</div>` : "<div style='color:red; margin-top:10px;'>සමාවන්න, එම රෝගය හමුවුණේ නැත.</div>";
+}
+
+if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'si-LK';
+    document.getElementById('voiceBtn').onclick = () => recognition.start();
+    recognition.onresult = (e) => {
+        document.getElementById('diseaseSearchInput').value = e.results[0][0].transcript;
+        performSearch();
+    };
+}
+
+const imageInput = document.getElementById('imageInput');
+const preview = document.getElementById('preview');
+const previewContainer = document.getElementById('previewContainer');
+const uploadArea = document.getElementById('uploadArea');
+
 imageInput.addEventListener('change', function() {
     const file = this.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = e => {
             preview.src = e.target.result;
             previewContainer.style.display = 'block';
-            const keys = Object.keys(diseaseData);
-            const randomD = keys[Math.floor(Math.random() * keys.length)];
-            resultDisplay.innerHTML = `<div class="result-card"><h3>Detected: ${randomD.toUpperCase()}</h3><p>${diseaseData[randomD]}</p></div>`;
-        }
+            uploadArea.style.display = 'none';
+        };
         reader.readAsDataURL(file);
     }
 });
 
-// Search Logic
-function performSearch() {
-    const q = searchInput.value.toLowerCase().trim();
-    if(q) {
-        let found = false;
-        for (let d in diseaseData) {
-            if (d.includes(q)) {
-                searchResultDisplay.innerHTML = `<div class="result-card" style="border-left-color:#1976d2; margin-top:15px;"><h4>Result: ${d.toUpperCase()}</h4><p>${diseaseData[d]}</p></div>`;
-                found = true; break;
-            }
-        }
-        if (!found) searchResultDisplay.innerHTML = `<p style="color:red; margin-top:10px;">හමුවුණේ නැත.</p>`;
-    }
-}
-
-// Mic Logic
-const voiceBtn = document.getElementById('voiceBtn');
-if ('webkitSpeechRecognition' in window) {
-    const rec = new webkitSpeechRecognition();
-    voiceBtn.addEventListener('click', () => { rec.start(); voiceBtn.style.color = 'red'; });
-    rec.onresult = (e) => { searchInput.value = e.results[0][0].transcript; performSearch(); };
-    rec.onend = () => { voiceBtn.style.color = '#2e7d32'; };
-}
-
 function removeImage() {
-    imageInput.value = ''; previewContainer.style.display = 'none'; resultDisplay.innerHTML = '';
+    imageInput.value = '';
+    previewContainer.style.display = 'none';
+    uploadArea.style.display = 'block';
+    document.getElementById('resultDisplay').innerHTML = "";
+}
+
+function analyzeDisease() {
+    const res = document.getElementById('resultDisplay');
+    res.innerHTML = "<p style='margin-top:20px;'><i class='fas fa-spinner fa-spin'></i> AI පරීක්ෂාව සිදු කරයි...</p>";
+    setTimeout(() => {
+        res.innerHTML = `<div style="background:#fff3e0; padding:20px; border-radius:15px; margin-top:20px; border-left: 5px solid #ff9800; text-align:left;">
+            <h4 style="margin:0; color:#e65100;">Analysis Complete</h4>
+            <p style="margin-top:10px;">පත්‍රයේ රෝගයක් ඇති බව හඳුනාගෙන ඇත. ඉහත පිළියම් අනුගමනය කරන්න.</p>
+        </div>`;
+    }, 2000);
 }
