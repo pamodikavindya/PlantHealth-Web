@@ -1,100 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriDoctor | දළු රෝග හඳුනාගැනීම</title>
+    <title>AgriDoctor Pro | ශ්‍රී ලංකා</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo"><i class="fas fa-leaf"></i> <span>AgriDoctor</span></div>
+            <div class="brand">
+                <img src="agriculture-icon-logo-vector-design-template_827767-2376.avif" alt="AgriDoctor Logo" class="mini-logo">
+                <div class="logo">Agri<span>Doctor</span></div>
+            </div>
             <nav class="nav">
-                <a href="#upload">Identify</a>
-                <a href="#info">Diseases</a>
-                <a href="#contacts">Support</a>
+                <a href="#upload-section">Analysis</a>
+                <a href="#map-section">Risk Map</a>
+                <a href="#contact-section">Contact</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Plant Disease Identification</h1>
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Smart Farming <br>Support Sri Lanka.</h1>
+                <p>නවීන තාක්ෂණය භාවිතා කර රෝග 15කට අධික ප්‍රමාණයක් හඳුනාගෙන නිවැරදි උපදෙස් ලබාගන්න.</p>
+                <a href="#upload-section" class="btn-primary">පරීක්ෂා කරන්න</a>
+            </div>
             <div class="hero-image">
-                <img src="hand-giving-growing-plant_.jpg" alt="Plant Health">
+                <img src="agriculture-icon-logo-vector-design-template_827767-2376.avif" alt="Agriculture" class="hero-img">
             </div>
         </div>
     </section>
 
     <section class="search-section">
         <div class="container">
-            <div class="search-box-container">
-                <h2>Quick Disease Search</h2>
+            <div class="search-card">
+                <h3>Quick Disease Search</h3>
                 <div class="search-bar">
-                    <input type="text" id="diseaseSearchInput" placeholder="Enter disease name...">
-                    <button type="button" id="voiceBtn"><i class="fas fa-microphone"></i></button>
-                    <button type="button" id="searchBtn" onclick="performSearch()"><i class="fas fa-search"></i> Search</button>
+                    <input type="text" id="diseaseSearchInput" placeholder="රෝගයේ නම සොයන්න (උදා: Rust)...">
+                    <button id="voiceBtn"><i class="fas fa-microphone"></i></button>
+                    <button id="searchBtn" onclick="performSearch()">සොයන්න</button>
                 </div>
-                <div id="searchResultDisplay"></div> 
+                <div id="searchResultDisplay"></div>
             </div>
         </div>
     </section>
 
-    <section id="upload" class="upload-section">
+    <section id="upload-section" class="upload-section">
         <div class="container">
-            <div class="upload-box-main">
-                <h2>Upload Diseased Plant Image</h2>
-                <div class="upload-area" id="uploadArea">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Drag & Drop your image here or click to browse</p>
+            <div class="upload-box">
+                <h2>AI Disease Analysis</h2>
+                <div class="upload-area" id="uploadArea" onclick="document.getElementById('imageInput').click()">
+                    <i class="fas fa-camera"></i>
+                    <p>පත්‍රයේ පින්තූරය මෙතනට Upload කරන්න</p>
                     <input type="file" id="imageInput" accept="image/*" hidden>
-                    <button class="btn-primary" id="uploadBtn">Choose File</button>
                 </div>
-
-                <div id="previewContainer" style="display: none;">
-                    <img id="preview" src="" alt="Preview">
-                    <br>
-                    <button id="removeBtn" onclick="removeImage()">Remove Image</button>
+                <div id="previewContainer" style="display: none; margin-top: 20px;">
+                    <img id="preview" src="">
+                    <div style="margin-top: 15px;">
+                        <button onclick="removeImage()" class="btn-outline">ඉවත් කරන්න</button>
+                        <button onclick="analyzeDisease()" class="btn-primary">විශ්ලේෂණය</button>
+                    </div>
                 </div>
-
                 <div id="resultDisplay"></div>
             </div>
         </div>
     </section>
 
-    <section id="contacts" class="contacts-section">
+    <section id="map-section" class="map-section">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">Sri Lankan Agriculture Support</h2>
-            <div class="contact-cards">
-                <div class="contact-card">
+            <h2 class="section-title">අවදානම් කලාප සිතියම</h2>
+            <div id="riskMap"></div>
+        </div>
+    </section>
+
+    <section id="contact-section" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">සම්බන්ධ වන්න</h2>
+            <div class="contact-grid">
+                <a href="tel:1920" class="contact-card">
                     <i class="fas fa-phone-alt"></i>
-                    <h3>Hotline</h3>
-                    <p>Department of Agriculture</p>
-                    <a href="tel:1920">1920</a>
+                    <h4>Hotline</h4>
+                    <p>1920 (කෘෂිකර්ම සහය)</p>
+                </a>
+                <div class="contact-card email-card">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email Address</h4>
+                    <a href="mailto:info@doa.gov.lk">info@doa.gov.lk</a>
+                    <a href="mailto:dgoffice@doa.gov.lk">dgoffice@doa.gov.lk</a>
                 </div>
-                <div class="contact-card">
+                <a href="https://doa.gov.lk" target="_blank" class="contact-card">
                     <i class="fas fa-globe"></i>
-                    <h3>Website</h3>
-                    <p>Official Portal</p>
-                    <a href="https://doa.gov.lk" target="_blank">doa.gov.lk</a>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Local Offices</h3>
-                    <p>Find nearby support</p>
-                    <a href="https://doa.gov.lk/contact-us/" target="_blank">Contact Us</a>
-                </div>
+                    <h4>Web Site</h4>
+                    <p>www.doa.gov.lk</p>
+                </a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2026 AgriDoctor - Developed for Sri Lankan Agriculture</p>
+        <p>&copy; 2026 AgriDoctor Sri Lanka. All Rights Reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
